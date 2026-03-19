@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destructuring Props — Day 3 | React Props Series</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style3.css">
+</head>
+<body>
+<!-- Custom amber glow blobs (defined in style3.css) -->
+<div class="glow-tr" aria-hidden="true"></div>
+<div class="glow-bl" aria-hidden="true"></div>
+
+<div class="wrapper">
+
+  <!-- Series nav -->
+  <nav class="series-nav">
+    <div class="series-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="2.2" fill="#61dafb"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(60 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(120 12 12)"/>
+      </svg>
+      <span class="series-title">React Props Series</span>
+    </div>
+    <div class="day-badge"><span>●</span>&nbsp;Day 3 of 3</div>
+  </nav>
+
+  <!-- Post card -->
+  <article class="post-card">
+    <div class="card-stripe"></div>
+
+    <header class="card-header">
+      <div class="heading-row">
+        <div>
+          <h1><span class="gradient-text">Destructuring</span><br>Props — Pro Style</h1>
+          <p class="card-subtitle">সবচেয়ে পরিষ্কার উপায়ে props ব্যবহার করো — default value-সহ!</p>
+        </div>
+        <div class="icon-cluster">
+          <div class="icon-chip react-chip" title="React">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="2.2" fill="#61dafb"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(60 12 12)"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(120 12 12)"/>
+            </svg>
+          </div>
+          <div class="icon-chip js-chip" title="JavaScript">JS</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Before / After -->
+    <div class="compare-section">
+      <div class="compare-label">Before vs After</div>
+      <div class="compare-grid">
+
+        <!-- Bad -->
+        <div class="compare-card bad">
+          <div class="compare-header">✗ &nbsp;পুরনো পদ্ধতি (verbose)</div>
+          <div class="code-body">
+            <div class="cl"><span class="ln">1</span><span class="k">function </span><span class="fn">Button</span><span class="br">(</span><span class="p">props</span><span class="br">) {</span></div>
+            <div class="cl"><span class="ln">2</span><span>&nbsp;&nbsp;</span><span class="k">return </span><span class="br">(</span></div>
+            <div class="cl"><span class="ln">3</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&lt;button</span></div>
+            <div class="cl"><span class="ln">4</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="at">style</span><span class="br">={{</span></div>
+            <div class="cl"><span class="ln">5</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="p">background</span><span class="tx">:</span></div>
+            <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="p">props</span><span class="tx">.</span><span class="p">color</span></div>
+            <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="br">}}</span></div>
+            <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="at">onClick</span><span class="br">={</span><span class="p">props</span><span class="tx">.</span><span class="p">onClick</span><span class="br">}</span></div>
+            <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&gt;</span></div>
+            <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="br">{</span><span class="p">props</span><span class="tx">.</span><span class="p">label</span><span class="br">}</span></div>
+            <div class="cl"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&lt;/button&gt;</span></div>
+            <div class="cl"><span class="ln">12</span><span>&nbsp;&nbsp;</span><span class="br">);</span></div>
+            <div class="cl"><span class="ln">13</span><span class="br">}</span></div>
+          </div>
+        </div>
+
+        <!-- Good -->
+        <div class="compare-card good">
+          <div class="compare-header">✓ &nbsp;Destructure পদ্ধতি (clean)</div>
+          <div class="code-body">
+            <div class="cl"><span class="ln">1</span><span class="k">function </span><span class="fn">Button</span><span class="br">({</span></div>
+            <div class="cl"><span class="ln">2</span><span>&nbsp;&nbsp;</span><span class="p">label</span><span class="tx">,</span></div>
+            <div class="cl"><span class="ln">3</span><span>&nbsp;&nbsp;</span><span class="p">color</span><span class="br"> = </span><span class="s">"blue"</span><span class="tx">,</span></div>
+            <div class="cl"><span class="ln">4</span><span>&nbsp;&nbsp;</span><span class="p">onClick</span></div>
+            <div class="cl"><span class="ln">5</span><span class="br">}) {</span></div>
+            <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;</span><span class="k">return </span><span class="br">(</span></div>
+            <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&lt;button</span></div>
+            <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="at">style</span><span class="br">={{</span><span class="p"> background</span><span class="tx">: </span><span class="p">color </span><span class="br">}}</span></div>
+            <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="at">onClick</span><span class="br">={</span><span class="p">onClick</span><span class="br">}</span></div>
+            <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&gt;</span></div>
+            <div class="cl"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="br">{</span><span class="p">label</span><span class="br">}</span></div>
+            <div class="cl"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&lt;/button&gt;</span></div>
+            <div class="cl"><span class="ln">13</span><span>&nbsp;&nbsp;</span><span class="br">);</span></div>
+            <div class="cl"><span class="ln">14</span><span class="br">}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full usage -->
+    <div class="full-section">
+      <div class="full-label">Component ব্যবহার করা</div>
+      <div class="code-window">
+        <div class="code-titlebar">
+          <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+          <span class="win-filename">App.jsx</span>
+        </div>
+        <div class="code-body">
+          <div class="cl"><span class="ln">1</span><span class="cm">// color না দিলে default "blue" কাজ করবে</span></div>
+          <div class="cl"><span class="ln">2</span><span class="tg">&lt;Button </span><span class="at">label</span><span class="br">=</span><span class="s">"Submit"</span><span class="tg"> /&gt;</span></div>
+          <div class="cl"><span class="ln">3</span></div>
+          <div class="cl"><span class="ln">4</span><span class="cm">// color দিলে সেটাই ব্যবহার হবে</span></div>
+          <div class="cl"><span class="ln">5</span><span class="tg">&lt;Button</span></div>
+          <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;</span><span class="at">label</span><span class="br">=</span><span class="s">"Delete"</span></div>
+          <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;</span><span class="at">color</span><span class="br">=</span><span class="s">"red"</span></div>
+          <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;</span><span class="at">onClick</span><span class="br">={</span><span class="br">()</span><span class="tx"> =&gt; </span><span class="fn">handleDelete</span><span class="br">()}</span></div>
+          <div class="cl"><span class="ln">9</span><span class="tg">/&gt;</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Callout tip -->
+    <div class="callout">
+      <div class="callout-icon">💡</div>
+      <div class="callout-text">
+        <strong>Default value tip:</strong>
+        <code>color = "blue"</code> লেখার মানে — যদি কেউ <code>color</code> prop না দেয়, তাহলে আপনা-আপনি <code>"blue"</code> ব্যবহার হবে।
+      </div>
+    </div>
+
+    <div class="bangla-btn-row">
+      <button class="bangla-btn" id="banglaBtn" onclick="showBangla()">
+        <span>🇧🇩</span> বাংলায় বুঝুন
+      </button>
+    </div>
+
+    <div class="bangla-panel" id="banglaPanel">
+      <div class="bangla-panel-header">
+        <div class="status-dot typing" id="statusDot"></div>
+        <span id="panelStatus">ব্যাখ্যা লেখা হচ্ছে...</span>
+      </div>
+      <div class="bangla-content" id="banglaContent"></div>
+    </div>
+
+    <footer class="card-footer">
+      <div class="hashtags">
+        <span class="ht">#ReactJS</span><span class="ht">#JavaScript</span>
+        <span class="ht">#Destructuring</span><span class="ht">#CleanCode</span><span class="ht">#FrontendDev</span>
+      </div>
+      <span class="post-counter">3 / 3</span>
+    </footer>
+  </article>
+
+  <!-- Series complete badge -->
+  <div class="series-complete">
+    <div class="complete-icon">🎉</div>
+    <div class="complete-text">
+      <h3>সিরিজ সম্পন্ন!</h3>
+      <p>তুমি React Props-এর তিনটি গুরুত্বপূর্ণ concept শিখে ফেলেছো — Basics, Arrays &amp; Objects, এবং Destructuring।</p>
+    </div>
+  </div>
+
+  <!-- Bottom navigation — back only -->
+  <div class="post-nav left">
+    <a class="nav-btn prev" href="post2-props-objects.html">
+      <span class="nav-arrow">←</span>
+      আগের পোস্ট: Arrays &amp; Objects
+    </a>
+  </div>
+
+</div>
+
+<script>
+const PARTS = [
+  'আজকে সবচেয়ে মজার টপিক — <strong>destructuring</strong>! এটা আসলে pure JavaScript-এর একটা feature, React-এর না। কিন্তু React props-এর সাথে এটা এত সুন্দরভাবে মেলে যে সবাই এটাই ব্যবহার করে।',
+  'বাম দিকের কোডে দেখো — <code>function Button(props)</code> লিখলে প্রতিবার <code>props.label</code>, <code>props.color</code>, <code>props.onClick</code> — এভাবে <code>props.</code> বারবার লিখতে হচ্ছে। কোডটা দেখতে ভারী লাগছে, তাই না?',
+  'ডান দিকে দেখো — <code>function Button({ label, color = "blue", onClick })</code> লেখার পর থেকে সরাসরি <code>label</code>, <code>color</code>, <code>onClick</code> ব্যবহার করা যাচ্ছে। কোথাও <code>props.</code> লিখতে হচ্ছে না! এটাই হলো destructuring।',
+  'এখন সবচেয়ে দারুণ অংশ — <code>color = "blue"</code> এই লেখাটার মানে হলো: যদি কেউ <code>color</code> prop না পাঠায়, তাহলে <strong>automatically</strong> <code>"blue"</code> ব্যবহার হবে। তাই <code>&lt;Button label="Submit" /&gt;</code> লিখলেও button নীল রঙের হবে। আলাদাভাবে কিছু check করতে হবে না!',
+  'এই pattern-টা React-এ সবচেয়ে বেশি ব্যবহার হওয়া pattern-গুলোর একটি। যেকোনো senior developer-এর কোড দেখলে এভাবেই props destructure করা দেখবে। এখন থেকে তুমিও এই style-এ লেখো — কোড clean থাকবে, পড়তে সহজ লাগবে! 🚀'
+];
+let busy=false,finished=false;
+function showBangla(){if(busy||finished)return;busy=true;document.getElementById('banglaBtn').classList.add('done');document.getElementById('banglaBtn').innerHTML='<span>✍️</span> লেখা হচ্ছে...';document.getElementById('banglaPanel').classList.add('visible');runTypewriter();}
+async function runTypewriter(){const box=document.getElementById('banglaContent'),dot=document.getElementById('statusDot'),status=document.getElementById('panelStatus'),btn=document.getElementById('banglaBtn');box.innerHTML='';for(let i=0;i<PARTS.length;i++){const p=document.createElement('p');box.appendChild(p);await typeParagraph(p,PARTS[i]);if(i<PARTS.length-1)await sleep(160);}dot.className='status-dot green';status.textContent='ব্যাখ্যা সম্পন্ন ✓';btn.innerHTML='<span>✅</span> ব্যাখ্যা দেখানো হয়েছে';finished=true;}
+async function typeParagraph(el,html){const tokens=tokenise(html);let rendered='';const cur=document.createElement('span');cur.className='cursor';for(const tok of tokens){rendered+=tok.val;el.innerHTML=rendered;el.appendChild(cur);if(tok.isChar)await sleep(16);}cur.remove();el.innerHTML=rendered;}
+function tokenise(html){const tokens=[];let i=0;while(i<html.length){if(html[i]==='<'){const end=html.indexOf('>',i);if(end!==-1){tokens.push({val:html.slice(i,end+1),isChar:false});i=end+1;continue;}}const cp=html.codePointAt(i);const ch=String.fromCodePoint(cp);tokens.push({val:ch,isChar:true});i+=ch.length;}return tokens;}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+</script>
+</body>
+</html>

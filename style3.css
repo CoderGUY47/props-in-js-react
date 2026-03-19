@@ -1,0 +1,229 @@
+/* ============================================================
+   style3.css — Post 3: Destructuring Props  |  Amber / Orange theme
+   ============================================================ */
+
+:root {
+  /* Brand colours */
+  --accent:        #f59e0b;
+  --accent2:       #fb923c;
+  --accent-dim:    rgba(245,158,11,0.1);
+  --accent-border: rgba(245,158,11,0.25);
+
+  /* Page */
+  --bg:   #070501;
+  --grid: rgba(245,158,11,0.04);
+  --glow: rgba(245,158,11,0.1);
+
+  /* Card */
+  --card-bg:         #0c0903;
+  --card-border:     rgba(245,158,11,0.1);
+  --card-glow:       0 0 60px rgba(245,158,11,0.06);
+  --card-glow-hover: 0 0 90px rgba(245,158,11,0.12);
+
+  /* Header */
+  --header-tint: rgba(245,158,11,0.04);
+  --header-glow: rgba(245,158,11,0.1);
+
+  /* Text */
+  --text:       #fef3c7;
+  --text-muted: #6b5a25;
+  --text-dim:   #3a3010;
+
+  /* Button */
+  --btn-bg:          linear-gradient(135deg, rgba(245,158,11,0.12), rgba(251,146,60,0.07));
+  --btn-border:      rgba(245,158,11,0.28);
+  --btn-bg-hover:    linear-gradient(135deg, rgba(245,158,11,0.22), rgba(251,146,60,0.14));
+  --btn-border-hover:rgba(245,158,11,0.52);
+  --btn-shadow:      0 8px 26px rgba(245,158,11,0.16);
+
+  /* Bangla panel */
+  --panel-bg:         linear-gradient(135deg, rgba(245,158,11,0.05) 0%, rgba(251,146,60,0.03) 100%);
+  --panel-border:     rgba(245,158,11,0.14);
+  --panel-header-bg:  rgba(245,158,11,0.04);
+  --bangla-text:      #c4985a;
+
+  /* Inline code */
+  --code-inline-bg:     rgba(245,158,11,0.1);
+  --code-inline-border: rgba(245,158,11,0.2);
+  --code-inline-text:   #fbbf24;
+
+  /* Hashtag chips */
+  --tag-text:   var(--text-muted);
+  --tag-bg:     var(--accent-dim);
+  --tag-border: var(--accent-border);
+}
+
+/* ── Page background ── */
+body { background: var(--bg); }
+
+/* Two separate glow blobs for post 3 */
+.glow-tr {
+  position: fixed;
+  top: -150px; right: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+  animation: da 7s ease-in-out infinite alternate;
+}
+
+.glow-bl {
+  position: fixed;
+  bottom: -150px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(251,146,60,0.08) 0%, transparent 65%);
+  pointer-events: none; z-index: 0;
+  animation: db 9s ease-in-out infinite alternate;
+}
+
+@keyframes da { from{transform:translate(0,0)} to{transform:translate(-30px,30px)} }
+@keyframes db { from{transform:translate(0,0)} to{transform:translate(30px,-30px)} }
+
+/* Suppress body::after so the two custom glows take over */
+body::after { display: none; }
+
+/* ── Syntax highlight (amber palette) ── */
+.k  { color: #fb923c; }
+.fn { color: #fbbf24; }
+.p  { color: #86efac; }
+.s  { color: #f9a8d4; }
+.n  { color: #67e8f9; }
+.cm { color: #3d2c08; font-style: italic; }
+.br { color: #78716c; }
+.tx { color: #a8956e; }
+.tg { color: #4ade80; }
+.at { color: #fbbf24; }
+
+/* ── Code window filename ── */
+.win-filename { color: #3a2808; }
+
+/* ── Before/After compare grid ── */
+.compare-section { padding: 22px 32px 18px; }
+
+.compare-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.compare-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid;
+}
+
+.compare-card.bad {
+  border-color: rgba(248,113,113,0.2);
+  background: rgba(248,113,113,0.03);
+}
+
+.compare-card.good {
+  border-color: rgba(74,222,128,0.2);
+  background: rgba(74,222,128,0.03);
+  box-shadow: 0 0 24px rgba(74,222,128,0.04);
+}
+
+.compare-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.compare-card.bad  .compare-header { color: #f87171; background: rgba(248,113,113,0.05); }
+.compare-card.good .compare-header { color: #4ade80; background: rgba(74,222,128,0.05); }
+
+/* ── Full usage section ── */
+.full-section { padding: 0 32px 22px; }
+
+.full-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.full-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(245,158,11,0.1);
+}
+
+/* ── Tip callout ── */
+.callout {
+  margin: 0 32px 22px;
+  background: linear-gradient(135deg, rgba(245,158,11,0.07), rgba(251,146,60,0.04));
+  border: 1px solid rgba(245,158,11,0.18);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 13px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.callout-icon { font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+
+.callout-text {
+  font-size: 13px;
+  color: #b08840;
+  line-height: 1.7;
+}
+
+.callout-text strong { color: var(--accent); font-weight: 600; }
+
+.callout-text code {
+  font-family: 'Fira Code', monospace;
+  font-size: 12px;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.2);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #fbbf24;
+}
+
+/* ── Series complete badge ── */
+.series-complete {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(74,222,128,0.07), rgba(34,211,238,0.04));
+  border: 1px solid rgba(74,222,128,0.18);
+  border-radius: 14px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.complete-icon {
+  width: 42px; height: 42px;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.22);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.complete-text h3 { font-size: 13px; font-weight: 700; color: #4ade80; margin-bottom: 4px; }
+.complete-text p  { font-size: 11.5px; color: #3a6a50; line-height: 1.55; }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Props কী? — Day 1 | React Props Series</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Series nav -->
+  <nav class="series-nav">
+    <div class="series-logo">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="2.2" fill="#61dafb"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(60 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(120 12 12)"/>
+      </svg>
+      <span class="series-title">React Props Series</span>
+    </div>
+    <div class="day-badge"><span>●</span>&nbsp;Day 1 of 3</div>
+  </nav>
+
+  <!-- Post card -->
+  <article class="post-card">
+    <div class="card-stripe"></div>
+
+    <header class="card-header">
+      <div class="heading-row">
+        <div>
+          <h1>Props কী?<br><span class="accent">The Basics</span></h1>
+          <p class="card-subtitle">React-এ ডেটা পাঠানোর সবচেয়ে সহজ উপায় — function parameter-এর মতোই!</p>
+        </div>
+        <div class="icon-cluster">
+          <div class="icon-chip react-chip" title="React">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="2.2" fill="#61dafb"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(60 12 12)"/>
+              <ellipse cx="12" cy="12" rx="10.5" ry="4" fill="none" stroke="#61dafb" stroke-width="1.1" transform="rotate(120 12 12)"/>
+            </svg>
+          </div>
+          <div class="icon-chip js-chip" title="JavaScript">JS</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="concept-strip">
+      <div class="concept-item"><div class="concept-dot"></div><span class="concept-text">Props = Function Parameter</span></div>
+      <div class="concept-item"><div class="concept-dot"></div><span class="concept-text">Parent → Child flow</span></div>
+      <div class="concept-item"><div class="concept-dot"></div><span class="concept-text">Read-only (immutable)</span></div>
+    </div>
+
+    <section class="code-section">
+      <div class="code-label">Code Example</div>
+      <div class="code-window">
+        <div class="code-titlebar">
+          <span class="win-dot r"></span><span class="win-dot y"></span><span class="win-dot g"></span>
+          <span class="win-filename">Greeting.jsx</span>
+        </div>
+        <div class="code-body">
+          <div class="cl"><span class="ln">1</span><span class="cm">// ✦ Normal JS — একটি সাধারণ function</span></div>
+          <div class="cl"><span class="ln">2</span><span class="k">function </span><span class="fn">greet</span><span class="br">(</span><span class="p">name</span><span class="br">) {</span></div>
+          <div class="cl"><span class="ln">3</span><span>&nbsp;&nbsp;</span><span class="k">return </span><span class="s">`Hello, ${</span><span class="p">name</span><span class="s">}!`</span><span class="br">;</span></div>
+          <div class="cl"><span class="ln">4</span><span class="br">}</span></div>
+          <div class="cl"><span class="ln">5</span></div>
+          <div class="cl"><span class="ln">6</span><span class="cm">// ✦ React Component — props IS সেই parameter</span></div>
+          <div class="cl"><span class="ln">7</span><span class="k">function </span><span class="fn">Greeting</span><span class="br">(</span><span class="p">props</span><span class="br">) {</span></div>
+          <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;</span><span class="k">return </span><span class="br">(</span></div>
+          <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="tg">&lt;h1&gt;</span><span class="tx">Hello, </span><span class="br">{</span><span class="p">props</span><span class="br">.</span><span class="p">name</span><span class="br">}</span><span class="tx">!</span><span class="tg">&lt;/h1&gt;</span></div>
+          <div class="cl"><span class="ln">10</span><span>&nbsp;&nbsp;</span><span class="br">);</span></div>
+          <div class="cl"><span class="ln">11</span><span class="br">}</span></div>
+          <div class="cl"><span class="ln">12</span></div>
+          <div class="cl"><span class="ln">13</span><span class="cm">// ✦ Component ব্যবহার করা</span></div>
+          <div class="cl"><span class="ln">14</span><span class="tg">&lt;Greeting </span><span class="at">name</span><span class="br">=</span><span class="s">"Arafat"</span><span class="tg"> /&gt;</span></div>
+          <div class="cl"><span class="ln">15</span><span class="cm">// ➜ Output: Hello, Arafat!</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bangla-btn-row">
+      <button class="bangla-btn" id="banglaBtn" onclick="showBangla()">
+        <span>🇧🇩</span> বাংলায় বুঝুন
+      </button>
+    </div>
+
+    <div class="bangla-panel" id="banglaPanel">
+      <div class="bangla-panel-header">
+        <div class="status-dot typing" id="statusDot"></div>
+        <span id="panelStatus">ব্যাখ্যা লেখা হচ্ছে...</span>
+      </div>
+      <div class="bangla-content" id="banglaContent"></div>
+    </div>
+
+    <footer class="card-footer">
+      <div class="hashtags">
+        <span class="ht">#ReactJS</span><span class="ht">#JavaScript</span>
+        <span class="ht">#Props</span><span class="ht">#WebDev</span><span class="ht">#FrontendDev</span>
+      </div>
+      <span class="post-counter">1 / 3</span>
+    </footer>
+  </article>
+
+  <!-- Bottom navigation -->
+  <div class="post-nav right">
+    <a class="nav-btn" href="post2-props-objects.html">
+      পরের পোস্ট: Arrays &amp; Objects
+      <span class="nav-arrow">→</span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+const PARTS = [
+  'চলো প্রথমে একটা সহজ কথা বলি — React-এ <strong>props</strong> আসলে কিছুই না, শুধু একটা সাধারণ JavaScript function-এর <strong>parameter</strong>!',
+  'উপরের কোডের ২ নম্বর লাইনে দেখো: <code>function greet(name)</code> — এখানে <code>name</code> হলো parameter। আমরা যখন <code>greet("Arafat")</code> লিখি, তখন <code>"Arafat"</code> সেই parameter-এ চলে যায়। এটা তুমি আগে থেকেই জানো!',
+  'এখন React-এর ক্ষেত্রে — ৭ নম্বর লাইনে <code>function Greeting(props)</code> লেখা আছে। এখানে <code>props</code> হলো সেই একই parameter, শুধু নামটা <code>props</code>। React এই <code>props</code>-এর ভেতরে সব ডেটা অবজেক্ট হিসেবে রেখে দেয়।',
+  '১৪ নম্বর লাইনে লেখা <code>&lt;Greeting name="Arafat" /&gt;</code> — এটা মানে হলো আমরা <code>Greeting</code> component-কে ডাকছি এবং <code>name="Arafat"</code> দিয়ে ডেটা পাঠাচ্ছি। React এই <code>name</code>-কে <code>props</code> object-এর ভেতরে ঢুকিয়ে দেয়। তাই <code>props.name</code> লিখলেই <code>"Arafat"</code> পাওয়া যায়।',
+  'আর একটা গুরুত্বপূর্ণ কথা — props সবসময় <strong>parent থেকে child-এ</strong> যায়, উল্টো দিকে কখনো না। এবং props কখনো পরিবর্তন করা যায় না — এটা <strong>read-only</strong>। এই দুটো নিয়ম মনে রাখলেই React-এর অনেক কিছু সহজ হয়ে যাবে! 🚀'
+];
+let busy=false,finished=false;
+function showBangla(){if(busy||finished)return;busy=true;document.getElementById('banglaBtn').classList.add('done');document.getElementById('banglaBtn').innerHTML='<span>✍️</span> লেখা হচ্ছে...';document.getElementById('banglaPanel').classList.add('visible');runTypewriter();}
+async function runTypewriter(){const box=document.getElementById('banglaContent'),dot=document.getElementById('statusDot'),status=document.getElementById('panelStatus'),btn=document.getElementById('banglaBtn');box.innerHTML='';for(let i=0;i<PARTS.length;i++){const p=document.createElement('p');box.appendChild(p);await typeParagraph(p,PARTS[i]);if(i<PARTS.length-1)await sleep(160);}dot.className='status-dot green';status.textContent='ব্যাখ্যা সম্পন্ন ✓';btn.innerHTML='<span>✅</span> ব্যাখ্যা দেখানো হয়েছে';finished=true;}
+async function typeParagraph(el,html){const tokens=tokenise(html);let rendered='';const cur=document.createElement('span');cur.className='cursor';for(const tok of tokens){rendered+=tok.val;el.innerHTML=rendered;el.appendChild(cur);if(tok.isChar)await sleep(16);}cur.remove();el.innerHTML=rendered;}
+function tokenise(html){const tokens=[];let i=0;while(i<html.length){if(html[i]==='<'){const end=html.indexOf('>',i);if(end!==-1){tokens.push({val:html.slice(i,end+1),isChar:false});i=end+1;continue;}}const cp=html.codePointAt(i);const ch=String.fromCodePoint(cp);tokens.push({val:ch,isChar:true});i+=ch.length;}return tokens;}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+</script>
+</body>
+</html>
