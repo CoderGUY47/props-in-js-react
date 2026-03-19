@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Props in JS & React</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 1.5rem;
+    }
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .link-item {
+      display: block;
+      padding: 1rem;
+      background: #334155;
+      color: #f8fafc;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 1.1rem;
+    }
+    .link-item:hover {
+      background: #475569;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Props Topics</h1>
+    <div class="link-list">
+      <a class="link-item" href="./post1-props-basics.html">Post 1: Props Basics</a>
+      <a class="link-item" href="./post2-props-objects.html">Post 2: Props Objects</a>
+      <a class="link-item" href="./post3-destructuring.html">Post 3: Destructuring</a>
+    </div>
+  </div>
+</body>
+</html>
