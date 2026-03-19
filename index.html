@@ -4,61 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Props in JS & React</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #0f172a;
-      color: #e2e8f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            poppins: ['"Poppins"', 'sans-serif'],
+          },
+          backgroundImage: {
+            'noise': 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\'/%3E%3C/svg%3E")',
+            'card-gradient': 'linear-gradient(135deg, rgba(56,189,248,0.10) 0%, rgba(99,102,241,0.08) 100%)',
+          },
+          backgroundSize: {
+            'noise-size': '180px',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both',
+          }
+        }
+      }
     }
-    .container {
-      max-width: 600px;
-      width: 90%;
-      text-align: center;
-      background: #1e293b;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    }
-    h1 {
-      color: #38bdf8;
-      margin-bottom: 1.5rem;
-    }
-    .link-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .link-item {
-      display: block;
-      padding: 1rem;
-      background: #334155;
-      color: #f8fafc;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.2s;
-      font-size: 1.1rem;
-    }
-    .link-item:hover {
-      background: #475569;
-      transform: translateY(-2px);
-    }
-  </style>
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
-    <h1>Props Topics</h1>
-    <div class="link-list">
-      <a class="link-item" href="./post1-props-basics.html">Post 1: Props Basics</a>
-      <a class="link-item" href="./post2-props-objects.html">Post 2: Props Objects</a>
-      <a class="link-item" href="./post3-destructuring.html">Post 3: Destructuring</a>
+<body class="bg-[#080d17] font-poppins min-h-screen flex items-center justify-center relative overflow-x-hidden">
+
+  <!-- Noise overlay -->
+  <div class="fixed inset-0 pointer-events-none z-0 opacity-[0.025] bg-noise bg-noise-size"></div>
+
+  <!-- Glow blobs -->
+  <div class="w-[320px] h-[320px] rounded-full blur-[80px] absolute pointer-events-none bg-sky-500/20 top-[-60px] left-[-80px] z-0"></div>
+  <div class="w-[320px] h-[320px] rounded-full blur-[80px] absolute pointer-events-none bg-indigo-600/15 bottom-[-80px] right-[-60px] z-0"></div>
+
+  <div class="relative z-10 w-full max-w-lg mx-auto px-4 py-12">
+
+    <!-- Header -->
+    <div class="animate-fade-up mb-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/25 rounded-full px-4 py-1.5 mb-5">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+        <span class="text-[0.65rem] tracking-[0.12em] uppercase text-sky-400">Learning Series</span>
+      </div>
+      <h1 class="font-poppins text-5xl font-extrabold tracking-tight text-white leading-tight mb-3">
+        Props in<br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">JS &amp; React</span>
+      </h1>
+      <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+        তিনটি পোস্টে শিখুন Props-এর A to Z।<br/>
+        <span class="text-slate-500">Three posts · Bangla explained</span>
+      </p>
     </div>
+
+    <!-- Cards -->
+    <div class="flex flex-col gap-3">
+
+      <!-- Post 1 -->
+      <a href="./post1-props-basics.html"
+         class="animate-fade-up [animation-delay:0.08s] relative overflow-hidden transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.012] hover:shadow-[0_8px_40px_0_rgba(56,189,248,0.18),0_2px_8px_rgba(0,0,0,0.4)] before:absolute before:inset-0 before:bg-card-gradient before:opacity-0 before:transition-opacity before:duration-[220ms] hover:before:opacity-100 flex items-center gap-5 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 group">
+        <div class="font-poppins text-[0.78rem] font-extrabold min-w-[28px] h-[28px] flex items-center justify-center rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/20 px-2">
+          01
+        </div>
+        <div class="flex-1 text-left relative z-10">
+          <p class="text-[0.65rem] tracking-[0.12em] uppercase text-slate-500 mb-0.5">Beginner</p>
+          <p class="text-white font-bold text-base leading-tight">Props Basics</p>
+          <p class="text-slate-500 text-xs mt-0.5">What are props &amp; how they work</p>
+        </div>
+        <svg class="transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[5px] w-4 h-4 text-slate-500 group-hover:text-sky-400 flex-shrink-0 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Post 2 -->
+      <a href="./post2-props-objects.html"
+         class="animate-fade-up [animation-delay:0.18s] relative overflow-hidden transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.012] hover:shadow-[0_8px_40px_0_rgba(56,189,248,0.18),0_2px_8px_rgba(0,0,0,0.4)] before:absolute before:inset-0 before:bg-card-gradient before:opacity-0 before:transition-opacity before:duration-[220ms] hover:before:opacity-100 flex items-center gap-5 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 group">
+        <div class="font-poppins text-[0.78rem] font-extrabold min-w-[28px] h-[28px] flex items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 px-2">
+          02
+        </div>
+        <div class="flex-1 text-left relative z-10">
+          <p class="text-[0.65rem] tracking-[0.12em] uppercase text-slate-500 mb-0.5">Intermediate</p>
+          <p class="text-white font-bold text-base leading-tight">Props Objects</p>
+          <p class="text-slate-500 text-xs mt-0.5">Passing objects &amp; complex data</p>
+        </div>
+        <svg class="transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[5px] w-4 h-4 text-slate-500 group-hover:text-indigo-400 flex-shrink-0 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <!-- Post 3 -->
+      <a href="./post3-destructuring.html"
+         class="animate-fade-up [animation-delay:0.28s] relative overflow-hidden transition-all duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:scale-[1.012] hover:shadow-[0_8px_40px_0_rgba(56,189,248,0.18),0_2px_8px_rgba(0,0,0,0.4)] before:absolute before:inset-0 before:bg-card-gradient before:opacity-0 before:transition-opacity before:duration-[220ms] hover:before:opacity-100 flex items-center gap-5 bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-4 group">
+        <div class="font-poppins text-[0.78rem] font-extrabold min-w-[28px] h-[28px] flex items-center justify-center rounded-xl bg-violet-500/15 text-violet-400 border border-violet-500/20 px-2">
+          03
+        </div>
+        <div class="flex-1 text-left relative z-10">
+          <p class="text-[0.65rem] tracking-[0.12em] uppercase text-slate-500 mb-0.5">Advanced</p>
+          <p class="text-white font-bold text-base leading-tight">Destructuring</p>
+          <p class="text-slate-500 text-xs mt-0.5">Clean syntax with destructured props</p>
+        </div>
+        <svg class="transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-[5px] w-4 h-4 text-slate-500 group-hover:text-violet-400 flex-shrink-0 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="animate-fade-up [animation-delay:0.38s] mt-10 text-center">
+      <p class="text-xs text-slate-600 tracking-widest uppercase">Built with React · Tailwind CSS</p>
+    </div>
+
   </div>
 </body>
 </html>
